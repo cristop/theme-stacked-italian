@@ -489,3 +489,13 @@ span#token-address {
     overflow-wrap: break-word;
     word-wrap: break-word;
 }
+
+
+@media screen and (max-width: 900px) {
+    .header-section .container,
+    .token-info .container,
+    .gallery-section .container {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
