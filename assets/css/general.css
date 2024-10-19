@@ -295,7 +295,7 @@ footer .container:after {
 }
 
 .levitate-invert {
-    animation: levitate-invert 6s ease-in-out infinite;
+    animation: levitate-invert 5s ease-in-out infinite;
 }
 
 @keyframes levitate {
@@ -506,5 +506,34 @@ span#token-address {
         margin-right: -12px;
         padding-right: 15px;
         padding-left: 15px;
+    }
+}
+
+.shiny-box {
+    overflow: hidden; /* Oculta el brillo fuera de la caja */
+    position: relative;
+}
+
+.shiny-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Empieza fuera de la caja */
+    width: 300%; /* Se asegura de que cubra toda la caja durante la animación */
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0) 70%);
+    animation: shine 3s ease-in-out infinite;
+    pointer-events: none; /* Evita que el efecto de brillo interfiera con el contenido */
+}
+
+@keyframes shine {
+    0% {
+        left: -300%;
+    }
+    40% {
+        left: 150%; /* El brillo pasa completamente */
+    }
+    100% {
+        left: 150%; /* Pausa el movimiento en la posición final */
     }
 }
