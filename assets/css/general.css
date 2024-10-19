@@ -12,10 +12,16 @@ a{
 
 body {
     color: white;
-    background-image: url('../img/FONDO-DE-WEBDESENF.jpeg');
-    background-size: cover;
-    background-position: top;
-    background-attachment: fixed;
+    
+}
+
+@media screen and (min-width: 600px) {
+    body{
+        background-image: url('../img/FONDO-DE-WEBDESENF.jpeg');
+        background-size: cover;
+        background-position: top;
+        background-attachment: fixed;
+    }
 }
 
 .container{
@@ -151,6 +157,16 @@ body {
     color: #FFDEA7;
     text-transform: uppercase;
     font-size: 0.7rem;
+}
+
+.navbar-toggler:focus{
+    box-shadow: 0 !important;
+}
+
+@media screen and (max-width: 650px) {
+    .navbar a{
+        text-align: right;
+    }
 }
 
 .navbar a:hover {
