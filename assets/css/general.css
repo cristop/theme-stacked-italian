@@ -179,6 +179,7 @@ body {
     width: 100%;
     object-fit: cover;
     margin: 0 auto;
+    height: 100px;
 }
 
 .tns-item {
@@ -189,12 +190,16 @@ body {
 .gallery-section {
 }
 
+section#media .tns-nav {
+    bottom: -5px;
+}
+
 .tns-nav {
-    /* text-align: center; */ /* Centra los indicadores */
+    text-align: center; /* Centra los indicadores */
     /* margin-top: 15px; */ /* Espacio entre los indicadores y el carrusel */
     position: absolute;
-    bottom: 10px;
-    width: 100%;
+    bottom: 15px;
+    width: -webkit-fill-available;
 }
 
 .tns-nav button {
@@ -355,4 +360,14 @@ footer .container{
     .carousel-container {
         width: 90%; /* Para que se ajuste mejor en pantallas pequeñas */
     }
+}
+
+
+button[data-action="stop"],
+button[data-action="start"]{
+    display: none;
+}
+
+.tns-outer {
+    padding-bottom: 25px !important;
 }
