@@ -160,7 +160,7 @@ body {
 }
 
 .navbar-toggler:focus{
-    box-shadow: 0 !important;
+    box-shadow: none !important;
 }
 
 @media screen and (max-width: 650px) {
@@ -215,6 +215,7 @@ body {
 
 section#media .tns-nav {
     bottom: -5px;
+    width: 100%;
 }
 
 .tns-nav {
@@ -222,7 +223,7 @@ section#media .tns-nav {
     /* margin-top: 15px; */ /* Espacio entre los indicadores y el carrusel */
     position: absolute;
     bottom: 15px;
-    width: -webkit-fill-available;
+    width: calc(100% - 40px);
 }
 
 .tns-nav button {
@@ -497,5 +498,13 @@ span#token-address {
     .gallery-section .container {
         padding-left: 20px;
         padding-right: 20px;
+    }
+
+    .navbar-collapse{
+        background-color: #444 !important;
+        margin-left: -12px;
+        margin-right: -12px;
+        padding-right: 15px;
+        padding-left: 15px;
     }
 }

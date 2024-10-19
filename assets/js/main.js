@@ -231,3 +231,18 @@ galleryImages.forEach(image => {
 document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
     videoFrame.src = ''; // Limpia el src para detener el video
 });
+
+////////////////////////////////////////////////////////////
+// para cerrar el menu en mobile
+// Selecciona todos los enlaces dentro del navbar
+const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+const navbarCollapse = document.querySelector('.navbar-collapse');
+
+// Agrega el evento a cada enlace para cerrar el menú
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (navbarCollapse.classList.contains('show')) {
+            new bootstrap.Collapse(navbarCollapse).hide(); // Oculta el menú
+        }
+    });
+});
