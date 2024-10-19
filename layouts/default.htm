@@ -36,10 +36,13 @@ description = "Default layout"
 
 </head>
 
-<body class="{{ this.page.baseFileName }}">
-    <div class="preload" style="width: 100vw;height: 100vh;position: fixed;background-color: #fff;z-index: 9999;top:0;">
-        <img src="{{ 'assets/img/svg-loaders/spinning-circles.svg'|theme }}" alt="" width="50" style="position: absolute;top: calc(50% + -30px);left: 50%;transform: translate(-50%, -50%);">
-    </div>
+<body style="background-color: #111;">
+    <!-- Loading Screen -->
+  <div id="loading-screen">
+      <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Wait...</span>
+      </div>
+  </div>
 
     {% partial 'header' %}
 
@@ -47,46 +50,21 @@ description = "Default layout"
 
     {% partial 'footer' %}
 
-    <!-- Fonts -->
-    <!-- <link rel="stylesheet" href="{{ 'assets/fonts/stylesheet.css'|theme }}" media="all" async> -->
+    <link href="{{ 'assets/css/bootstrap.min.css'|theme }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ 'assets/css/tiny-slider.css'|theme }}">
+    <link href="{{ 'assets/css/general.css'|theme }}" rel="stylesheet">
 
-    <!-- libreria WOW animaciones CSS -->
-    <link href="{{ 'assets/library/wow/animate-reduce.css'|theme }}" type="text/css" rel="stylesheet" media="screen,projection" async />
+    <script src="{{ 'assets/js/bootstrap.bundle.min.js'|theme }}"></script>
+    <script src="{{ 'assets/js/tiny-slider.js'|theme }}"></script>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ 'assets/css/normalize.css'|theme }}" media="all" async>
-    <link rel="stylesheet" href="{{ 'assets/css/booster.min.css'|theme }}" media="all" async>
-    <link rel="stylesheet" href="{{ 'assets/css/general.css'|theme }}" async>
+    <link href="{{ 'assets/js/aos.css'|theme }}" rel="stylesheet">
+    <script src="{{ 'assets/js/aos.js'|theme }}"></script>
 
-    <!-- jQuery -->
-    <script src="{{ 'assets/library/jQuery/jquery-3.3.1.min.js'|theme }}"></script>
-    <script src="{{ 'assets/library/jQuery/jquery.easing.js'|theme }}"></script>
-
-    <!-- libreria WOW animaciones JS -->
-    <script src="{{ 'assets/library/wow/wow.min.js'|theme }}"></script>
-    <script>
-        wow = new WOW(
-          {
-            animateClass: 'animated',
-            offset:       200
-          }
-        );
-        wow.init();
-    </script>
-
-    <!-- Main -->
     <script src="{{ 'assets/js/main.js'|theme }}"></script>
 
-    <script src="{{ 'assets/library/lazyload/lazyload.js'|theme }}"></script>
 
-    <script>
-      var images = document.querySelectorAll("img");
-      var lazy = lazyload(images);
-      lazy.loadAndDestroy();
-    </script>
-
-    {% framework extras %}
-    {% scripts %}
+    
+    
 
 </body>
 </html>

@@ -6,22 +6,92 @@ is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
 ==
-{% put styles %}
-<link rel="stylesheet" href="{{ 'assets/css/partials/home.css'|theme }}" async>
-{% endput %}
+<!-- Header Section -->
+<section class="header-section" id="home">
+    <div class="container text-center shadow">
+        <div class="levitate">
+            <div class="shiny-image">
+                <img src="{{ 'assets/img/escudo.png'|theme }}" class="img-fluid" style="max-width: 350px;" data-aos="zoom-in"  data-aos-delay="200">
+            </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="500">
+            <div class="levitate-invert">
+                <div class="carousel-container mt-5">
+                    <div class="progress-bar">
+                        <div class="progress"></div> <!-- Barrita gris -->
+                    </div>
+                    <div class="carousel-content">
+                        <div>
+                            <p>A legacy meme token designed to ride the wake of the SOLID <span>index</span></p>
+                        </div>
+                        <div>
+                            <p>A legacy meme token designed to ride the wake of the SOLID <span>index</span></p>
+                        </div>
+                        <div>
+                            <p>A legacy meme token designed to ride the wake of the SOLID <span>index</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<div class="home-spot" style="background-image: url('{{ 'assets/img/bg/home.jpg'|theme }}')">
-	<div class="container">
-		<div class="table">
-			<div class="table-cell">
-				<h1 class="title">
-					HOME PAGE
-				</h1>
-				<div class="subtitle">Subtitle</div>
-				<a href="{{ 'prestamo/solicitud'|page }}" target="_blank" class="btn btn-primary">COMENZAR</a>
-			</div>
-		</div>
-	</div>
-</div>
+<!-- Token Info Section -->
+<section class="token-info position-relative" id="chart-swap">
+    <div class="container position-relative shadow">
+        <div class="z-1 position-relative">
+            <div class="bg-dark mb-3" style="height: 400px;" data-aos="fade-up"></div>
+            <div class="bg-dark" style="height: 400px;" data-aos="fade-up"></div>
+        </div>
+    </div>
+</section>
 
+<!-- Media Section (Video and Images) -->
+<section class="buy-section" id="how-to-buy">
+    <div class="container text-center shadow">
+            <div class="ratio ratio-16x9" data-aos="fade-up">
+                <iframe src="https://www.youtube.com/embed/ZU2Sd9guSjI?si=2x-mwiCyvlld9IjM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+    </div>
+</section>
 
+<!-- Gallery Section -->
+<section class="gallery-section" id="media">
+    <div class="container position-relative shadow">
+      <div class="position-relative z-1" data-aos="fade-up">
+        <div class="my-slider">
+          <div>
+            <img src="{{ 'assets/img/carousel01.jpg'|theme }}" alt="..." data-video-id="ZU2Sd9guSjI"> <!-- ID del video de YouTube -->
+          </div>
+          <div>
+            <img src="{{ 'assets/img/carousel02.jpg'|theme }}" alt="..." data-video-id="dQw4w9WgXcQ"> <!-- ID del video de YouTube -->
+          </div>
+          <div>
+            <img src="{{ 'assets/img/carousel03.jpg'|theme }}" alt="..." data-video-id="3JZ_D3ELwOQ"> <!-- ID del video de YouTube -->
+          </div>
+          <div>
+            <img src="{{ 'assets/img/carousel03.jpg'|theme }}" alt="..." data-video-id="aBcDeFgHiJk"> <!-- Otro ID de video -->
+          </div>
+          <!-- Añade más imágenes si lo necesitas -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Modal para mostrar el video -->
+<div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoModalLabel">Video</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-16x9">
+            <iframe id="video-frame" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

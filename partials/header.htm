@@ -1,45 +1,27 @@
 description = "Header"
 ==
-{# [session]
-security = "all"
-== #}
-<link rel="stylesheet" href="{{ 'assets/css/header.css'|theme }}" async>
-
-<!-- Header -->
-<header id="navHeader">
-	<div class="container">
-		<div class="responsiveMenu">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-		<nav class="menu-main">
-            <ul>
-                <li>
-                    <a href="#" class="{% if this.page.id == 'home' %} active{% endif %}">Menu 1</a>
-                    <ul>
-                        <li><a href="#">Submenu 1</a></li>
-                        <li><a href="#">Submenu 2</a></li>
-                        <li><a href="#">Submenu 3</a></li>
-                    </ul>
+<!-- Navbar (Menú fijo) -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#chart-swap">Chart/Swap</a>
                 </li>
-                <li>
-                    <a href="#" class="{% if this.page.id == 'home' %} active{% endif %}">Menu 2</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#how-to-buy">How to Buy</a>
                 </li>
-                <li>
-                    <a href="#" class="{% if this.page.id == 'home' %} active{% endif %}">Menu 3</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#media">Media</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#socials">Socials</a>
                 </li>
             </ul>
-        </nav>
-		<a href="/" class="logo js-scroll">
-			<img src="{{ 'assets/img/logo.svg'|theme }}" alt="" class="full-logo" />
-		</a>
-		{% if user %}
-			<a href="{{ 'session/perfil'|page }}" class="on-sesion c-primary">
-				<!-- <img src="{{ 'assets/img/icons/user.svg'|theme }}" width="30" /> -->
-				<img src="{{ user.getAvatarThumb(82) }}" alt="{{ user.name }} {{ user.surname }}" width="30" />
-				{{ user.person.company }}
-			</a>
-		{% endif %}
-	</div>
-</header>
+        </div>        
+    </div>
+    <div class="sep-menu"></div>
+</nav>

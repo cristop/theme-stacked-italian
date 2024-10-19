@@ -1,9 +1,48 @@
 description = "Footer"
 ==
-<link rel="stylesheet" href="{{ ['assets/css/footer.css']|theme }}" async>
+<!-- Footer Section -->
+<footer class="footer" id="socials">
+    <div class="container shadow">
+        <div data-aos="fade-up">
+            <img src="{{ 'assets/img/sociales-escudo.png'|theme }}" style="max-width: 200px;" class="levitate" />
+        </div>
 
-<footer>
-	<div class="container">
-		
-	</div>
+        <div data-aos="fade-up">
+            <div class="social-links levitate-invert">
+                <a href="#"><img src="{{ 'assets/img/twitter.svg'|theme }}" alt="Twitter"></a>
+                <a href="#"><img src="{{ 'assets/img/pdf.svg'|theme }}" alt="pdf"></a>
+                <a href="#"><img src="{{ 'assets/img/telegram.svg'|theme }}" alt="Telegram"></a>
+            </div>
+        </div>
+
+        <div class="stacked-token mt-3" data-aos="fade-up">
+            <p class="m-0"><strong>STACKED Token:</strong> 
+                <span id="token-address">0x67d8954C2B7386c8Dbf6936Cc2355bA2227F0a8f</span>
+                <button id="copy-button" class="copy-btn"><img src="{{ 'assets/img/clipboard01.svg'|theme }}" height="20" alt=""></button>
+            </p>
+            <p class="copied-message" id="copied-message">Copied!</p>
+        </div>
+
+        <small class="d-block mt-1" data-aos="fade-up"><strong>Copyright</strong> &copy; <strong>2024</strong>, <i>All Rights Reserved</i></small>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-transparent border-0 text-white fw-semibold" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Disclaimer
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab ducimus nostrum vero a natus, culpa, esse est deserunt aspernatur sequi voluptate! Facere consequatur, voluptate nobis adipisci et expedita porro! Dolor?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>

@@ -22,7 +22,7 @@ body {
     max-width: 620px;
     border-left: 3px #f2bb6b solid;
     border-right: 3px solid #f2bb6b;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .shadow{
@@ -100,10 +100,16 @@ body {
 
 .buy-section .container {
     background-color: #444; /* Fondo dentro del contenedor */
-    padding: 130px 90px;
+    padding: 130px 60px;
     background-image: url(../img/slide3.jpg);
     background-size: 100%;
     background-position: top center;
+}
+
+@media screen and (max-width: 900px) {
+    .buy-section .container {
+        padding: 130px 20px;
+    }
 }
 
 .buy-section img {
@@ -180,6 +186,7 @@ body {
     object-fit: cover;
     margin: 0 auto;
     height: 100px;
+    cursor: pointer;
 }
 
 .tns-item {
@@ -225,8 +232,18 @@ footer .container{
     background-image: url('../img/slide4.jpg');
     background-size: cover;
     padding-top: 1rem !important;
-    padding-bottom: 7rem !important;
+    padding-bottom: 4rem !important;
     background-position: center;
+}
+
+footer .container > * {
+    position: relative;
+    z-index: 1;
+}
+
+footer .container:after {
+    z-index: 0;
+    height: 190px;
 }
 
 .sep-menu {
@@ -261,7 +278,7 @@ footer .container{
 }
 
 .levitate-invert {
-    animation: levitate-invert 3s ease-in-out infinite;
+    animation: levitate-invert 6s ease-in-out infinite;
 }
 
 @keyframes levitate {
@@ -296,19 +313,28 @@ footer .container{
 .carousel-container {
     max-width: 400px; /* Ajusta el tamaño según lo necesites */
     background-color: #1a1a1a; /* Fondo negro */
-    border-radius: 20px; /* Bordes redondeados */
+    border-radius: 10px; /* Bordes redondeados */
     padding: 20px;
     padding-bottom: 25px;
     text-align: center;
     position: relative;
     color: white;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); /* Sombra para dar efecto de profundidad */
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 1); /* Sombra para dar efecto de profundidad */
+    -webkit-transition: all 0.2s ease;  
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;  
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.carousel-container:hover{
+    transform: scale(1.1)
 }
 
 /* Barrita de progreso superior */
 .progress-bar {
     width: 80%;
-    height: 6px;
+    height: 3px;
     background-color: #333; /* Fondo gris oscuro */
     border-radius: 3px;
     margin: 0 auto 15px auto;
@@ -319,46 +345,31 @@ footer .container{
 .progress {
     width: calc(100% / 3); /* Dividido según el número de páginas (ejemplo: 3 páginas) */
     height: 100%;
-    background-color: #cccccc; /* Color gris claro */
+    background-color: #f7da96; /* Color gris claro */
     border-radius: 3px;
-    transition: transform 0.5s ease; /* Transición suave de desplazamiento */
+    -webkit-transition: all 0.2s ease;  
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;  
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 /* Contenido del carrusel */
 .carousel-content p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     margin: 0;
+    letter-spacing: 1px;
 }
 
 .carousel-content p span {
     font-style: italic; /* Para el texto en cursiva */
 }
 
-/* Puntitos del carrusel */
-.carousel-dots {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.carousel-dots .dot {
-    width: 10px;
-    height: 10px;
-    background-color: #cccccc; /* Color gris claro para el punto inactivo */
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.carousel-dots .dot.active {
-    background-color: #f7da96; /* Color blanco para el punto activo */
-}
-
 /* Estilos adicionales para ajustar en mobile */
 @media (max-width: 480px) {
     .carousel-container {
-        width: 90%; /* Para que se ajuste mejor en pantallas pequeñas */
+        /* width: 90%; */ /* Para que se ajuste mejor en pantallas pequeñas */
     }
 }
 
@@ -370,4 +381,95 @@ button[data-action="start"]{
 
 .tns-outer {
     padding-bottom: 25px !important;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+    width: auto;
+    padding: 0;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+button#copy-button img {
+    margin: 0;
+}
+
+.copied-message {
+    display: none; /* Escondido por defecto */
+    font-size: 14px;
+    margin-top: 10px;
+    animation: fadeOut 3s forwards;
+    position: absolute;
+    background-color: #000;
+    color: #fff;
+    bottom: 10px;
+    padding: 8px;
+    z-index: 9999;
+    /* display: block; */
+    right: 10px;
+    border-radius: 4px;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.shiny-image {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Asegura que nada salga del contenedor */
+}
+
+.shiny-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.shiny-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Empieza fuera del contenedor */
+    width: 300%; /* Asegura que el brillo cubra toda la imagen al moverse */
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 70%);
+    animation: shine 2s infinite; /* Duración y repetición de la animación */
+    pointer-events: none; /* Evita interferencia con la interacción del usuario */
+    
+    /* Máscara que limita el brillo solo a la imagen */
+    mask-image: url('assets/img/escudo.png'); /* Reemplaza con la URL correcta de la imagen */
+    mask-size: 100% 100%;
+    mask-repeat: no-repeat;
+}
+
+@keyframes shine {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%; /* Cruza la imagen */
+    }
+}
+
+
+.modal-header .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+span#token-address {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
 }

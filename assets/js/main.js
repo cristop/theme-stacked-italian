@@ -8,35 +8,37 @@ var slider = tns({
   nav: true, // Ocultar puntos de navegación
   mouseDrag: true, // Arrastrar con el ratón
   loop: true, // Carrusel en bucle
-  gutter: 10, // Ajustar espacio entre imágenes (en píxeles)
+  gutter: 0, // Ajustar espacio entre imágenes (en píxeles)
   responsive: {
       0: {
-          items: 1, // Mostrar 1 ítem en pantallas pequeñas
-          gutter: 5 // Menor espacio entre ítems en pantallas pequeñas
+          items: 2, // Mostrar 1 ítem en pantallas pequeñas
+          gutter: 0 // Menor espacio entre ítems en pantallas pequeñas
       },
       600: {
           items: 2, // Mostrar 2 ítems en pantallas medianas
-          gutter: 5
+          gutter: 0
       },
       1000: {
           items: 3, // Mostrar 3 ítems en pantallas grandes
-          gutter: 5
+          gutter: 0
       }
   }
 });
 
 //////////////////////////////////////////////////////////////////////
 
+
 // Inicia el tiny-slider
 var slider = tns({
   container: '.carousel-content',
   items: 1,
   slideBy: 'page',
-  autoplay: true,
+  autoplay: false,
   controls: false, // Oculta los botones prev y next
   nav: true, // Activa la navegación por puntitos predeterminada de Tiny Slider
   autoplayButtonOutput: false,
-  autoplayTimeout: 10000
+  autoplayTimeout: 10000,
+  loop: false // Asegura que no se buclee al principio
 });
 
 // Selecciona la barra de progreso
@@ -45,18 +47,19 @@ var progressBar = document.querySelector('.progress');
 // Obtén la cantidad de páginas (items) en el slider
 var totalSlides = slider.getInfo().slideCount;
 
-// Actualiza la barra de progreso al cambiar el slide
+// Actualiza el ancho de la barra de progreso al cambiar el slide
 slider.events.on('indexChanged', function(info) {
-  var currentIndex = info.index % totalSlides; // Asegurarse de que el índice esté dentro del rango
-  var slideWidthPercentage = 100 / totalSlides; // Calcula el ancho del slide en porcentaje
-  var translateXPercentage = currentIndex * slideWidthPercentage; // Calcula la posición de la barra
-
-  // Mueve la barra en horizontal según la página actual
-  progressBar.style.transform = `translateX(${translateXPercentage}%)`;
+  var currentIndex = info.displayIndex - 1; // Obtiene el índice visible actual ajustado a 0 para la primera página
+  var progressPercentage = ((currentIndex + 1) / totalSlides) * 100; // Calcula el porcentaje de progreso
+  
+  // Ajusta el ancho de la barra de progreso según el progreso actual
+  progressBar.style.width = `${progressPercentage}%`;
 });
 
 // Inicializa la barra de progreso en la primera página
-progressBar.style.transform = 'translateX(0%)';
+progressBar.style.width = `${(1 / totalSlides) * 100}%`;
+
+
 
 
 
@@ -176,4 +179,55 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
+});
+
+//boton copiar
+document.getElementById('copy-button').addEventListener('click', function() {
+  var tokenAddress = document.getElementById('token-address').textContent;
+  
+  // Crea un campo de texto temporal para copiar el contenido
+  var tempInput = document.createElement('input');
+  tempInput.value = tokenAddress;
+  document.body.appendChild(tempInput);
+  tempInput.select();
+  document.execCommand('copy');
+  document.body.removeChild(tempInput);
+
+  // Mostrar el mensaje "Copiado!"
+  var copiedMessage = document.getElementById('copied-message');
+  copiedMessage.style.display = 'block';
+
+  // Ocultar el mensaje después de 2 segundos
+  setTimeout(function() {
+      copiedMessage.style.display = 'none';
+  }, 2000);
+});
+
+///////////////////////////////////////////////////
+// galeria de videos you tube
+
+// Selecciona todas las imágenes de la galería
+const galleryImages = document.querySelectorAll('.my-slider img');
+
+// Selecciona el iframe del modal
+const videoFrame = document.getElementById('video-frame');
+
+// Función para abrir el modal con el video correcto
+galleryImages.forEach(image => {
+    image.addEventListener('click', function() {
+        const videoId = this.getAttribute('data-video-id'); // Obtiene el ID del video desde el atributo personalizado
+        const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        
+        // Establece la URL del iframe con el ID del video
+        videoFrame.src = videoUrl;
+
+        // Abre el modal
+        const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+        videoModal.show();
+    });
+});
+
+// Limpiar el iframe cuando el modal se cierra para detener el video
+document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+    videoFrame.src = ''; // Limpia el src para detener el video
 });
