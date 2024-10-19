@@ -1,0 +1,172 @@
+title = "Article"
+url = "/article/:slug?"
+layout = "default"
+meta_title = "Academia Online - Zentinel Global"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+
+[blogPosts recentPosts]
+pageNumber = 1
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+postPage = "blog/category"
+
+[blogCategories]
+==
+function onEnd () {
+    $post = $this->components['blogPost'];
+    $post = $post->post;
+
+    if( $post ) {
+        $this->page->meta_title = $post->title;
+        $this->page->meta_description = strip_tags($post->summary);
+        if(isset($post->featured_images[0])){
+            $this->page->og_image = $post->featured_images[0]->path;
+        }
+    }
+}
+==
+{% set post = blogPost.post %}
+{% set all_categories = blogCategories.categories %}
+
+{% put styles %}
+<link rel="stylesheet" href="{{ 'assets/css/blog/article.css'|theme }}" async>
+{% endput %}
+
+<section id="header-blog">
+    <div class="container">
+        <div class="suptitle">BLOG</div>
+        <div class="title">
+            {{ post.title }}
+        </div>
+    </div>
+</section>
+
+
+<section id="article" class="section wow fadeIn  ">
+    <div class="container">
+        <div class="items-article flex t-col-2">
+            <div class="item-noticia w70">
+                <div class="bg">
+                    <div class="imagen_flex">
+                        {% if post.featured_images|first.path %}
+                        <img src="{{ post.featured_images|first.path }}" loading="lazy" width="100%" height="100%"
+                            alt="" />
+                        {% else %}
+                        <img src="https://via.placeholder.com/700x650/cccccc/ffffff.png" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="text-noticia">
+                        <div class="seccion-fecha">
+                            <div class="categorias">
+                                {% for category in post.categories %}
+                                {% if not loop.first %}, {% endif %}
+                                <a href="{{ 'blog/category'|page({ category: category.slug }) }}"> {{ category.name }} </a>
+                                {% endfor %}
+                            </div>
+                            <div class="fecha">{{ post.published_at|date("F d, Y") }}</div>
+                        </div>
+                        <div class="texto_flex">
+                            {{ post.content|md }}
+                        </div>
+                        <div class="item redes-sociales">
+                            <div class="bg">
+                                <div class="icons-redes">
+                                    <ul>
+                                        <li>
+                                            <a href="https://www.facebook.com/sharer.php?u={{ url_current() }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/facebook.svg'|theme }}"
+                                                    alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://twitter.com/share?url={{ url_current() }}&text={{ this.page.title }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/twitter.svg'|theme }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://plus.google.com/share?url={{ url_current() }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/google-plus-g.svg'|theme }}"
+                                                    alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.tumblr.com/share/link?url={{ url_current() }}&title={{ this.page.title }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/tumblr.svg'|theme }}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/shareArticle?url={{ url_current() }}&title={{ this.page.title }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/linkedin-in-brands.svg'|theme }}"
+                                                    alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://reddit.com/submit?url={{ url_current() }}&title={{ this.page.title }}"
+                                                target="_blank">
+                                                <img src="{{ 'assets/img/icons/redes/reddit-alien.svg'|theme }}"
+                                                    alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item ultimas-noticias w30">
+                <div class="bg">
+                    <div class="title">
+                        Ultimas noticias
+                    </div>
+                    {% for postRecent in recentPosts.posts.take(4) %}
+                    <a href="{# postRecent.url #}/article/{{ postRecent.slug }}">
+                        <div class="flex">
+                            <div class="imagen_flex">
+                                {% if postRecent.featured_images|first.path %}
+                                <img src="{{ postRecent.featured_images|first.path }}" loading="lazy" width="100%"
+                                    height="100%" alt="" />
+                                {% else %}
+                                <img src="https://via.placeholder.com/700x650/cccccc/ffffff.png" alt="">
+                                {% endif %}
+                            </div>
+                            <div class="title-notice">
+                                <div class="titulo_flex">
+                                    {{ str_limit(postRecent.title, 80) }}
+                                </div>
+                                <div class="texto_flex">
+                                    {{ postRecent.published_at|date("F d, Y")|capitalize }}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+
+                <div class="bg">
+                    <div class="title">
+                        Categorias
+                    </div>
+                    <ul class="category">
+                        {% for cat in all_categories %}
+                        <li><a href="{{ 'blog/category'|page({ category: cat.slug }) }}">{{ cat.name }} ({{
+                                cat.posts_count[0].count }})</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

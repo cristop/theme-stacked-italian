@@ -1,0 +1,358 @@
+html {
+    scroll-behavior: smooth;
+}
+
+a{
+    -webkit-transition: all 0.2s ease !important;  
+    -moz-transition: all 0.2s ease !important;
+    -ms-transition: all 0.2s ease !important;  
+    -o-transition: all 0.2s ease !important;
+    transition: all 0.2s ease !important;
+}
+
+body {
+    color: white;
+    background-image: url('../img/FONDO-DE-WEBDESENF.jpeg');
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+.container{
+    max-width: 620px;
+    border-left: 3px #f2bb6b solid;
+    border-right: 3px solid #f2bb6b;
+    overflow: hidden;
+}
+
+.shadow{
+    position: relative;
+}
+
+.shadow::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 50%, rgba(0, 0, 0, 0) 100%);
+    pointer-events: none;
+}
+
+
+.header-section {
+    position: relative;
+}
+
+.header-section .container {
+    background-image: url('../img/slide1.jpeg');
+    background-size: cover;
+    background-position: center;
+    padding-top: 90px;
+    padding-bottom: 230px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.header-section h1 {
+    font-size: 3rem;
+    color: #FFD700;
+}
+
+.token-info .container, .gallery-section .container {
+    background-color: #f57c00;
+    background: linear-gradient(to bottom, #f57c00, #fbc02d);
+}
+
+.token-info .container::before, .gallery-section .container::before{
+    display: block;
+    content: "";
+    position: absolute;
+    width: 100%;
+    background-image: url(../img/trama-de-lineas-slide-3.png);
+    background-size: cover;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.token-info .container {
+    background-color: #333;
+    padding: 50px;
+    padding-bottom: 114px;
+}
+
+.token-info h2 {
+    text-align: center;
+    color: #FFD700;
+}
+
+.price-section {
+    background-color: #222;
+    padding: 30px 0;
+}
+
+.buy-section {
+    /* padding: 50px 0; */
+}
+
+.buy-section .container {
+    background-color: #444; /* Fondo dentro del contenedor */
+    padding: 130px 90px;
+    background-image: url(../img/slide3.jpg);
+    background-size: 100%;
+    background-position: top center;
+}
+
+.buy-section img {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer img {
+    margin: 0 13px;
+}
+
+.navbar {
+    background-color: #222;
+    padding-bottom: 16px;
+    transform: translateY(-100%); /* Mueve el navbar hacia arriba fuera de la pantalla */
+    transition: transform 1s ease; /* Transición suave para el movimiento */
+    position: fixed;
+    top: 0;
+    z-index: 1020;
+    width: 100%;
+}
+
+.navbar.show-navbar {
+    transform: translateY(0); /* Vuelve el navbar a su lugar original */
+}
+
+.navbar .container {
+    border: 0;
+}
+
+.navbar a,
+.navbar a:focus{
+    color: #FFDEA7;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+}
+
+.navbar a:hover {
+    color: #FFF;
+    transform: translateY(-2px);
+}
+
+.navbar a.active{
+    color: #FFF;
+    font-weight: bold;
+}
+
+.gallery-section {
+    /* padding: 50px 0; */
+}
+
+.gallery-section .container {
+    background-color: #333; /* Fondo dentro del contenedor */
+    padding: 60px 30px;
+    padding-bottom: 120px;
+}
+
+.modal-content{
+    background-color: #333;
+}
+
+.tns-controls{
+    display: none;
+}
+
+.my-slider img {
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.tns-item {
+    display: flex;
+    justify-content: center;
+}
+
+.gallery-section {
+}
+
+.tns-nav {
+    /* text-align: center; */ /* Centra los indicadores */
+    /* margin-top: 15px; */ /* Espacio entre los indicadores y el carrusel */
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.tns-nav button {
+    width: 8px;
+    height: 8px;
+    background-color: #ccc;
+    border-radius: 50%;
+    border: none;
+    margin: 0 5px;
+    padding: 0;
+}
+
+.tns-nav button.tns-nav-active {
+    background-color: #f7da96; 
+}
+
+.tns-nav button:hover {
+    cursor: pointer;
+    background-color: #f7da96; 
+}
+
+footer .container{
+    background-image: url('../img/slide4.jpg');
+    background-size: cover;
+    padding-top: 1rem !important;
+    padding-bottom: 7rem !important;
+    background-position: center;
+}
+
+.sep-menu {
+    width: 100%;
+    border-top: 2px solid #e8e5d6;
+    position: absolute;
+    bottom: 11px;
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 30, 30, 1); /* Fondo negro */
+    z-index: 99999; /* Asegura que esté por encima de todo el contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transición para fade y desplazamiento */
+}
+
+#loading-screen.fade-out {
+    /*opacity: 0;*/ /* Desaparece con el fade out */
+    transform: translateY(-100vh); /* Se mueve hacia arriba al hacer fade out */
+    pointer-events: none; /* Asegura que no interfiera con el contenido una vez que está invisible */
+}
+
+.levitate {
+    animation: levitate 5s ease-in-out infinite;
+}
+
+.levitate-invert {
+    animation: levitate-invert 3s ease-in-out infinite;
+}
+
+@keyframes levitate {
+    0%, 100% {
+        transform: translateY(0); /* Posición inicial y final */
+    }
+    50% {
+        transform: translateY(-15px); /* Subir 20px hacia arriba */
+    }
+}
+
+@keyframes levitate-invert {
+    0%, 100% {
+        transform: translateY(0); /* Posición inicial y final */
+    }
+    50% {
+        transform: translateY(-5px); /* Subir 20px hacia arriba */
+    }
+}
+
+.social-links a{
+    display: inline-block;
+}
+.social-links a img{
+    width: 60px;
+}
+.social-links a:hover{
+    transform: scale(1.2);
+}
+
+
+.carousel-container {
+    max-width: 400px; /* Ajusta el tamaño según lo necesites */
+    background-color: #1a1a1a; /* Fondo negro */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 20px;
+    padding-bottom: 25px;
+    text-align: center;
+    position: relative;
+    color: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); /* Sombra para dar efecto de profundidad */
+}
+
+/* Barrita de progreso superior */
+.progress-bar {
+    width: 80%;
+    height: 6px;
+    background-color: #333; /* Fondo gris oscuro */
+    border-radius: 3px;
+    margin: 0 auto 15px auto;
+    position: relative;
+    overflow: hidden; /* Para ocultar la parte que se mueve fuera del contenedor */
+}
+
+.progress {
+    width: calc(100% / 3); /* Dividido según el número de páginas (ejemplo: 3 páginas) */
+    height: 100%;
+    background-color: #cccccc; /* Color gris claro */
+    border-radius: 3px;
+    transition: transform 0.5s ease; /* Transición suave de desplazamiento */
+}
+
+/* Contenido del carrusel */
+.carousel-content p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.carousel-content p span {
+    font-style: italic; /* Para el texto en cursiva */
+}
+
+/* Puntitos del carrusel */
+.carousel-dots {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.carousel-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #cccccc; /* Color gris claro para el punto inactivo */
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carousel-dots .dot.active {
+    background-color: #f7da96; /* Color blanco para el punto activo */
+}
+
+/* Estilos adicionales para ajustar en mobile */
+@media (max-width: 480px) {
+    .carousel-container {
+        width: 90%; /* Para que se ajuste mejor en pantallas pequeñas */
+    }
+}

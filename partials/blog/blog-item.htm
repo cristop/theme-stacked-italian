@@ -1,0 +1,41 @@
+description = "Blog Item"
+==
+{% for post in posts %}
+    {% if post.featured_images|length <= 0 %}
+        {% set image = 'https://via.placeholder.com/700x650/cccccc/ffffff.png' %}
+    {% else %}
+        {% set image = post.featured_images|first.path %}
+    {% endif %}
+
+    <div class="item wow fadeInUp">
+        <div class="bg">
+            <div class="imagen_flex">
+                <a href="{{ post.url }}">
+                    <img src="{{ image }}" loading="lazy" width="100%"
+                        height="100%" alt="" />
+                </a>
+            </div>
+            <div class="info-text">
+                <p class="text">{{ post.published_at|date("F d, Y") }}</p>
+                <div class="titulo_flex">
+                    <a href="{{ post.url }}">{{ str_limit(post.title, 55) }}</a>
+                </div>
+                <div class="texto_flex">
+                    {{ post.summary|raw|striptags }}
+                </div>
+                <div class="categorias">
+                    {# <a href="{{ post.url }}">{{ post.categories|first.name }}</a> #}
+                    {% for category in post.categories %}
+                        {% if not loop.first %}, {% endif %}
+                        <a href="{{ 'blog/category'|page({ category: category.slug }) }}">{{ category.name }} </a>
+                    {% endfor %}
+                </div>
+                <div class="btn-icon">
+                    <a href="{{ post.url }}" class="btn btn-primary">
+                        VER MAS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

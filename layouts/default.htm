@@ -1,0 +1,92 @@
+description = "Default layout"
+==
+{##}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="canonical" href="{{ url_current() }}">
+    <!-- <meta name="theme-color" content="#417286"/> -->
+
+    <title>{{ this.page.meta_title }}</title>
+    <meta name="description" content="{{ this.page.meta_description }}">
+
+    {# OG TAGS #}
+    {% if this.page.og_image %}
+        {% set og_image_final = this.page.og_image %}
+    {% else %}
+         {% set og_image_final = 'assets/img/og-image.jpg'|theme %}
+    {% endif %}
+
+    <meta property="og:site_name" content="Zentinel Global" />
+    <meta name="twitter:image" content="{{ og_image_final }}">
+    <meta name="twitter:description" content="{{ this.page.meta_description }}">
+    <meta name="twitter:title" content="{{ this.page.meta_title }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:image" content="{{ og_image_final }}">
+    <meta property="og:description" content="{{ this.page.meta_description }}">
+    <meta property="og:title" content="{{ this.page.meta_title }}">
+    <meta property="og:url" content="{{ url_current() }}">
+    <meta name="image" content="{{ og_image_final }}">
+
+    <link rel="icon" type="image/png" href="{{ 'assets/img/favicon.png'|theme }}" />
+
+    {% styles %}
+
+</head>
+
+<body class="{{ this.page.baseFileName }}">
+    <div class="preload" style="width: 100vw;height: 100vh;position: fixed;background-color: #fff;z-index: 9999;top:0;">
+        <img src="{{ 'assets/img/svg-loaders/spinning-circles.svg'|theme }}" alt="" width="50" style="position: absolute;top: calc(50% + -30px);left: 50%;transform: translate(-50%, -50%);">
+    </div>
+
+    {% partial 'header' %}
+
+    {% page %}
+
+    {% partial 'footer' %}
+
+    <!-- Fonts -->
+    <!-- <link rel="stylesheet" href="{{ 'assets/fonts/stylesheet.css'|theme }}" media="all" async> -->
+
+    <!-- libreria WOW animaciones CSS -->
+    <link href="{{ 'assets/library/wow/animate-reduce.css'|theme }}" type="text/css" rel="stylesheet" media="screen,projection" async />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ 'assets/css/normalize.css'|theme }}" media="all" async>
+    <link rel="stylesheet" href="{{ 'assets/css/booster.min.css'|theme }}" media="all" async>
+    <link rel="stylesheet" href="{{ 'assets/css/general.css'|theme }}" async>
+
+    <!-- jQuery -->
+    <script src="{{ 'assets/library/jQuery/jquery-3.3.1.min.js'|theme }}"></script>
+    <script src="{{ 'assets/library/jQuery/jquery.easing.js'|theme }}"></script>
+
+    <!-- libreria WOW animaciones JS -->
+    <script src="{{ 'assets/library/wow/wow.min.js'|theme }}"></script>
+    <script>
+        wow = new WOW(
+          {
+            animateClass: 'animated',
+            offset:       200
+          }
+        );
+        wow.init();
+    </script>
+
+    <!-- Main -->
+    <script src="{{ 'assets/js/main.js'|theme }}"></script>
+
+    <script src="{{ 'assets/library/lazyload/lazyload.js'|theme }}"></script>
+
+    <script>
+      var images = document.querySelectorAll("img");
+      var lazy = lazyload(images);
+      lazy.loadAndDestroy();
+    </script>
+
+    {% framework extras %}
+    {% scripts %}
+
+</body>
+</html>

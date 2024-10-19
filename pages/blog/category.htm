@@ -1,0 +1,26 @@
+title = "Category"
+url = "/category/:category?/:page?"
+layout = "default"
+meta_title = "Academia Online - Zentinel Global"
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :category }}"
+postsPerPage = 15
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog/category"
+postPage = "article"
+
+[blogCategories]
+slug = "{{ :category }}"
+displayEmpty = 0
+categoryPage = "blog/category"
+==
+{# Variable donde se guardan los resultados de la DB #}
+{% set posts = blogPosts.posts %}
+
+{% partial 'blog/blog-page' posts=posts categoryPage=categoryPage %}

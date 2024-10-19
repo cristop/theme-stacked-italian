@@ -1,0 +1,42 @@
+description = "Blog Page"
+==
+{% put styles %}
+<link rel="stylesheet" href="{{ 'assets/css/blog/blog.css'|theme }}" async>
+{% endput %}
+
+<section id="de-interes" class="section wow fadeIn  ">
+    <div class="container">
+        <div class="wow fadeInUp">
+            <div class="title">
+                {% if currentCategorySlug %} {{ currentCategorySlug|replace({ '-': ' ' })|capitalize }} {% else %} Blog {% endif %}
+            </div>
+            
+        </div>
+        <div class="de-interes flex t-col-3">
+            {% partial 'blog/blog-item' posts=posts %}
+        </div>
+
+        <!-- pagination -->
+        {% if posts.lastPage > 1 %}
+        <ul class="pagination">
+            <!-- Previous Link -->
+            {% if posts.currentPage > 1 %}
+                <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}" aria-label="Previous"><span aria-hidden="true">Previous</span></a></li>
+            {% endif %}
+            <!-- Previous Link -->
+            <!-- Page Item Link -->
+            {% for page in 1..posts.lastPage %}
+                <li {{ posts.currentPage == page ? 'class="active"' : null }}><a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a></li>
+            {% endfor %}
+            <!-- Page Item Link -->
+            <!-- Next Link -->
+            {% if posts.lastPage > posts.currentPage %}
+                <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}" aria-label="Next"><span aria-hidden="true">Next</span></a></li>
+            {% endif %}
+            <!-- Next Link -->
+        </ul>
+        {% endif %}
+        <!-- pagination -->    
+    </div>
+
+</section>

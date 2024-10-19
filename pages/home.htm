@@ -1,0 +1,27 @@
+title = "Home"
+url = "/"
+layout = "default"
+meta_title = ""
+is_hidden = 0
+robot_index = "index"
+robot_follow = "follow"
+==
+{% put styles %}
+<link rel="stylesheet" href="{{ 'assets/css/partials/home.css'|theme }}" async>
+{% endput %}
+
+<div class="home-spot" style="background-image: url('{{ 'assets/img/bg/home.jpg'|theme }}')">
+	<div class="container">
+		<div class="table">
+			<div class="table-cell">
+				<h1 class="title">
+					HOME PAGE
+				</h1>
+				<div class="subtitle">Subtitle</div>
+				<a href="{{ 'prestamo/solicitud'|page }}" target="_blank" class="btn btn-primary">COMENZAR</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
