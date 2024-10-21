@@ -1,3 +1,4 @@
+// Inicia el tiny-slider para la galería de imágenes
 var slider = tns({
   container: '.my-slider',
   items: 3, // Mostrar 3 ítems a la vez
@@ -5,50 +6,50 @@ var slider = tns({
   autoplay: true, // Activar autoplay
   autoplayTimeout: 3000, // Intervalo de 3 segundos
   controls: false, // Ocultar los controles (prev/next)
-  nav: true, // Ocultar puntos de navegación
-  mouseDrag: true, // Arrastrar con el ratón
+  nav: true, // Mostrar puntos de navegación
+  mouseDrag: true, // Permitir arrastrar con el ratón y deslizar con el dedo en móviles
   loop: true, // Carrusel en bucle
   gutter: 0, // Ajustar espacio entre imágenes (en píxeles)
   responsive: {
-      0: {
-          items: 2, // Mostrar 1 ítem en pantallas pequeñas
-          gutter: 0 // Menor espacio entre ítems en pantallas pequeñas
-      },
-      600: {
-          items: 2, // Mostrar 2 ítems en pantallas medianas
-          gutter: 0
-      },
-      1000: {
-          items: 3, // Mostrar 3 ítems en pantallas grandes
-          gutter: 0
-      }
+    0: {
+      items: 2, // Mostrar 2 ítems en pantallas pequeñas
+      gutter: 0 // Menor espacio entre ítems en pantallas pequeñas
+    },
+    600: {
+      items: 2, // Mostrar 2 ítems en pantallas medianas
+      gutter: 0
+    },
+    1000: {
+      items: 3, // Mostrar 3 ítems en pantallas grandes
+      gutter: 0
+    }
   }
 });
 
-//////////////////////////////////////////////////////////////////////
+//////////////////////////
 
-
-// Inicia el tiny-slider
-var slider = tns({
+// Inicia el tiny-slider para el carrusel con contenido (por ejemplo, de texto o videos)
+var slider2 = tns({
   container: '.carousel-content',
   items: 1,
   slideBy: 'page',
   autoplay: false,
-  controls: false, // Oculta los botones prev y next
-  nav: true, // Activa la navegación por puntitos predeterminada de Tiny Slider
+  controls: false, // Ocultar los botones prev y next
+  nav: true, // Mostrar navegación por puntitos
   autoplayButtonOutput: false,
   autoplayTimeout: 10000,
-  loop: false // Asegura que no se buclee al principio
+  loop: false, // No buclear los slides
+  mouseDrag: true, // Permitir arrastrar con el ratón y deslizar con el dedo en móviles
 });
 
 // Selecciona la barra de progreso
 var progressBar = document.querySelector('.progress');
 
 // Obtén la cantidad de páginas (items) en el slider
-var totalSlides = slider.getInfo().slideCount;
+var totalSlides = slider2.getInfo().slideCount;
 
 // Actualiza el ancho de la barra de progreso al cambiar el slide
-slider.events.on('indexChanged', function(info) {
+slider2.events.on('indexChanged', function(info) {
   var currentIndex = info.displayIndex - 1; // Obtiene el índice visible actual ajustado a 0 para la primera página
   var progressPercentage = ((currentIndex + 1) / totalSlides) * 100; // Calcula el porcentaje de progreso
   
@@ -245,4 +246,21 @@ navLinks.forEach(link => {
             new bootstrap.Collapse(navbarCollapse).hide(); // Oculta el menú
         }
     });
+});
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// Selecciona el modal por su ID
+const modalElement = document.getElementById('videoModal');
+
+// Detecta cuándo se está cerrando el modal
+modalElement.addEventListener('hide.bs.modal', function (event) {
+    // Añade la clase que activa la animación de cierre
+    modalElement.classList.add('closing');
+});
+
+// Detecta cuándo se ha terminado la animación de cierre para remover la clase
+modalElement.addEventListener('hidden.bs.modal', function (event) {
+    // Quita la clase de cierre una vez que se ha cerrado el modal completamente
+    modalElement.classList.remove('closing');
 });

@@ -39,8 +39,9 @@ robot_follow = "follow"
 <section class="token-info position-relative" id="chart-swap">
     <div class="container position-relative shadow">
         <div class="z-1 position-relative">
-            <div class="bg-dark mb-3" style="height: 400px;" data-aos="fade-up"></div>
-            <div class="bg-dark" style="height: 400px;" data-aos="fade-up"></div>
+            <div class="bg-dark mb-3" data-aos="fade-up">
+              <iframe src="https://dexscreener.com/pulsechain/0x7c831bd9310669edfc22c618d7ba453056178844?embed=1&theme=dark" style="touch-action: pan-y; opacity: 1; visibility: visible;" height="500" width="100%"></iframe>
+            </div>
         </div>
     </div>
 </section>
@@ -79,17 +80,14 @@ robot_follow = "follow"
 
 <!-- Modal para mostrar el video -->
 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="videoModalLabel">Video</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- modal-lg para agrandar -->
+        <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="ratio ratio-16x9">
+                    <iframe id="video-frame" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <div class="ratio ratio-16x9">
-            <iframe id="video-frame" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
