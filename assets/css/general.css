@@ -621,3 +621,14 @@ span#token-address {
     right: 10px;
     top: 10px;
 }
+
+.cryptopunk {
+    position: absolute !important;
+    right: 6px;
+    bottom: 20px;
+}
+
+.cryptopunk img{
+    margin: 0;
+    width: 10px;
+}
