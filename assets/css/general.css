@@ -259,7 +259,7 @@ footer .container{
     background-image: url('../img/slide4.jpg');
     background-size: cover;
     padding-top: 1rem !important;
-    padding-bottom: 4rem !important;
+    padding-bottom: 5.5rem !important;
     background-position: center;
 }
 
@@ -511,7 +511,6 @@ span#token-address {
     }
 
     .navbar-collapse{
-        background-color: #444 !important;
         margin-left: -12px;
         margin-right: -12px;
         padding-right: 15px;
