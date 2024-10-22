@@ -207,6 +207,13 @@ body {
     height: 100px;
     cursor: pointer;
 }
+.my-slider-2 img {
+    width: 100%;
+    object-fit: cover;
+    margin: 0 auto;
+    height: 250px;
+    cursor: pointer;
+}
 
 .tns-item {
     display: flex;
@@ -567,7 +574,7 @@ span#token-address {
 
 /* Estilo inicial del modal */
 .modal.fade .modal-dialog {
-    transition: all 0.2s cubic-bezier(0.25, 0.8, 0.5, 1); /* Suavidad adicional */
+    transition: all 0.1s ease; /* Suavidad adicional */
     opacity: 0; /* Oculto por defecto */
     transform: scale(0.5); /* Comienza pequeño */
 }
@@ -576,7 +583,7 @@ span#token-address {
 .modal.fade.show .modal-dialog {
     opacity: 1;
     transform: scale(1); /* Toma tamaño normal */
-    animation: zoomIn 0.2s ease-in-out; /* Animación de zoom-in suave */
+    animation: zoomIn 0.1s ease-in-out; /* Animación de zoom-in suave */
 }
 
 /* Animación de cierre */
@@ -593,7 +600,7 @@ span#token-address {
 }
 
 .modal-backdrop.show {
-    opacity: 0.2; /* Aparece con opacidad */
+    opacity: 0.3; /* Aparece con opacidad */
 }
 
 /* Opcional: ajuste de la opacidad del modal también */

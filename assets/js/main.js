@@ -26,6 +26,52 @@ var slider = tns({
   }
 });
 
+// Inicia el tiny-slider para la galería de imágenes
+var slider3 = tns({
+  container: '.my-slider-2',
+  items: 3, // Mostrar 3 ítems a la vez
+  slideBy: '1', // Moverse de a 1 ítem
+  autoplay: true, // Activar autoplay
+  autoplayTimeout: 3000, // Intervalo de 3 segundos
+  controls: false, // Ocultar los controles (prev/next)
+  nav: true, // Mostrar puntos de navegación
+  mouseDrag: true, // Permitir arrastrar con el ratón y deslizar con el dedo en móviles
+  loop: true, // Carrusel en bucle
+  gutter: 0, // Ajustar espacio entre imágenes (en píxeles)
+  responsive: {
+    0: {
+      items: 2, // Mostrar 2 ítems en pantallas pequeñas
+      gutter: 0 // Menor espacio entre ítems en pantallas pequeñas
+    },
+    600: {
+      items: 2, // Mostrar 2 ítems en pantallas medianas
+      gutter: 0
+    },
+    1000: {
+      items: 3, // Mostrar 3 ítems en pantallas grandes
+      gutter: 0
+    }
+  }
+});
+
+// Selecciona todas las imágenes dentro del slider "my-slider-2"
+const sliderImages = document.querySelectorAll('.my-slider-2 img');
+
+// Selecciona el elemento de la modal donde se mostrará la imagen
+const modalImage = document.getElementById('modal-image');
+const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+
+// Agregar un evento de clic a cada imagen en "my-slider-2"
+sliderImages.forEach(image => {
+    image.addEventListener('click', function() {
+        // Cambia la fuente de la imagen en la modal a la URL de la imagen clicada
+        modalImage.src = this.src;
+
+        // Abre la modal
+        imageModal.show();
+    });
+});
+
 //////////////////////////
 
 // Inicia el tiny-slider para el carrusel con contenido (por ejemplo, de texto o videos)
