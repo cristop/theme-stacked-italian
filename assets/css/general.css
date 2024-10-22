@@ -78,7 +78,7 @@ body {
     position: absolute;
     width: 100%;
     background-image: url(../img/trama-de-lineas-slide-3.png);
-    background-size: cover;
+    background-size: contain;
     height: 100%;
     top: 0;
     left: 0;
