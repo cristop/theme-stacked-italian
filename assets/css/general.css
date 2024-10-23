@@ -258,8 +258,8 @@ section#media .tns-nav {
 footer .container{
     background-image: url('../img/slide4.jpg');
     background-size: cover;
-    padding-top: 1rem !important;
-    padding-bottom: 5.5rem !important;
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
     background-position: center;
 }
 
@@ -634,4 +634,8 @@ span#token-address {
 
 div#exampleModal .modal-body {
     padding: 25px !important;
+}
+
+.social-links {
+    margin-top: 1rem;
 }
