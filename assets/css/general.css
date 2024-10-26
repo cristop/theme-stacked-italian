@@ -17,7 +17,7 @@ body {
 
 @media screen and (min-width: 600px) {
     body{
-        background-image: url('../img/FONDO-DE-WEBDESENF.jpeg');
+        background-image: url('../img/finalbackground.jpeg');
         background-size: cover;
         background-position: top;
         background-attachment: fixed;
