@@ -5,6 +5,8 @@ meta_title = "Stacked Italian"
 is_hidden = 0
 robot_index = "index"
 robot_follow = "follow"
+
+[posters]
 ==
 <!-- Header Section -->
 <section class="header-section" id="home">
@@ -91,18 +93,11 @@ robot_follow = "follow"
         
         <div class="position-relative">
             <div class="my-slider-2 mt-5">
+                {% for poster in posters %}
                 <div>
-                    <img src="{{ 'assets/img/slider1.jpg'|theme }}" alt="...">
+                    <img src="{{ poster.imagen.path }}" alt="" />
                 </div>
-                <div>
-                    <img src="{{ 'assets/img/slider2.jpg'|theme }}" alt="...">
-                </div>
-                <div>
-                    <img src="{{ 'assets/img/slider3.jpg'|theme }}" alt="...">
-                </div>
-                <div>
-                    <img src="{{ 'assets/img/slider2.jpg'|theme }}" alt="...">
-                </div>
+                {% endfor %}
             </div>
         </div>
 
