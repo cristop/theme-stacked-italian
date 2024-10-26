@@ -111,8 +111,6 @@ progressBar.style.width = `${(1 / totalSlides) * 100}%`;
 
 
 //////////////////////////////////////////////////////////////////////
-
-
 // Precarga
 window.addEventListener('load', function() {
   // Mostrar el navbar después de la carga con un pequeño retraso
@@ -250,34 +248,33 @@ document.getElementById('copy-button').addEventListener('click', function() {
   }, 2000);
 });
 
+
 ///////////////////////////////////////////////////
-// galeria de videos you tube
+// galeria de videos
+document.addEventListener('DOMContentLoaded', function () {
+  const videoModal = document.getElementById('videoModal');
+  const videoPlayer = document.getElementById('video-player');
+  const videoSource = document.getElementById('video-source');
+  const videoThumbnails = document.querySelectorAll('.my-slider img[data-video-url]');
 
-// Selecciona todas las imágenes de la galería
-const galleryImages = document.querySelectorAll('.my-slider img');
+  // Cuando se hace clic en una miniatura de video
+  videoThumbnails.forEach(thumbnail => {
+      thumbnail.addEventListener('click', function () {
+          const videoUrl = this.getAttribute('data-video-url');
+          videoSource.src = videoUrl;
+          videoPlayer.load(); // Recargar el video con la nueva URL
+          const bootstrapModal = new bootstrap.Modal(videoModal);
+          bootstrapModal.show();
+      });
+  });
 
-// Selecciona el iframe del modal
-const videoFrame = document.getElementById('video-frame');
-
-// Función para abrir el modal con el video correcto
-galleryImages.forEach(image => {
-    image.addEventListener('click', function() {
-        const videoId = this.getAttribute('data-video-id'); // Obtiene el ID del video desde el atributo personalizado
-        const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        
-        // Establece la URL del iframe con el ID del video
-        videoFrame.src = videoUrl;
-
-        // Abre el modal
-        const videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
-        videoModal.show();
-    });
+  // Limpia el video al cerrar la modal
+  videoModal.addEventListener('hidden.bs.modal', function () {
+      videoPlayer.pause(); // Pausar el video
+      videoSource.src = ""; // Limpiar la URL del video
+  });
 });
 
-// Limpiar el iframe cuando el modal se cierra para detener el video
-document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
-    videoFrame.src = ''; // Limpia el src para detener el video
-});
 
 ////////////////////////////////////////////////////////////
 // para cerrar el menu en mobile

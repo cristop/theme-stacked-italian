@@ -7,6 +7,7 @@ robot_index = "index"
 robot_follow = "follow"
 
 [posters]
+[videos]
 ==
 <!-- Header Section -->
 <section class="header-section" id="home">
@@ -72,52 +73,48 @@ robot_follow = "follow"
 <!-- Gallery Section -->
 <section class="gallery-section" id="media">
     <div class="container position-relative shadow">
-      <div class="position-relative z-1" data-aos="fade-up">
+        <div class="position-relative z-1" data-aos="fade-up">
 
-        <div class="position-relative">
-            <div class="my-slider">
-                <div>
-                    <img src="{{ 'assets/img/carousel01.jpg'|theme }}" alt="..." data-video-id="nW5U2IgXtQs"> <!-- ID del video de YouTube -->
+            <div class="position-relative">
+                <div class="my-slider">
+                    {% for video in videos %}
+                    <div>
+                        <img src="{{ video.imagen.path }}" data-video-url="{{ video.video.path }}" alt=""> <!-- URL del video MP4 -->
+                    </div>
+                    {% endfor %}
                 </div>
-                <div>
-                    <img src="{{ 'assets/img/carousel02.jpg'|theme }}" alt="..." data-video-id="nW5U2IgXtQs"> <!-- ID del video de YouTube -->
-                </div>
-                <div>
-                    <img src="{{ 'assets/img/carousel03.jpg'|theme }}" alt="..." data-video-id="nW5U2IgXtQs"> <!-- ID del video de YouTube -->
-                </div>
-                <div>
-                    <img src="{{ 'assets/img/carousel03.jpg'|theme }}" alt="..." data-video-id="nW5U2IgXtQs"> <!-- Otro ID de video -->
+            </div>
+            
+            <div class="position-relative">
+                <div class="my-slider-2 mt-5">
+                    {% for poster in posters %}
+                    <div>
+                        <img src="{{ poster.imagen.path }}" alt="" />
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        
-        <div class="position-relative">
-            <div class="my-slider-2 mt-5">
-                {% for poster in posters %}
-                <div>
-                    <img src="{{ poster.imagen.path }}" alt="" />
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
-      </div>
     </div>
-  </section>
+</section>
 
 <!-- Modal para mostrar el video -->
 <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg"> <!-- modal-lg para agrandar -->
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-body">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <div class="ratio ratio-16x9">
-                    <iframe id="video-frame" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <video id="video-player" controls>
+                        <source id="video-source" src="" type="video/mp4">
+                        Tu navegador no soporta la reproducción de videos.
+                    </video>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 <!-- Modal para mostrar las imágenes más grandes -->
